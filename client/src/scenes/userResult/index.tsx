@@ -1,10 +1,9 @@
 import React from "react";
 import { WithUserResultConsumer } from "../../store/userResult";
+import { IUserResultContextState } from "../../store/userResult/types";
 import styles from "./styles.module.scss";
 
-interface IProps {
-  isOffersFound: boolean;
-}
+interface IProps extends IUserResultContextState {}
 
 const UserResultPageComponent = ({ isOffersFound }: IProps) => {
   const message = isOffersFound
@@ -19,4 +18,5 @@ const UserResultPageComponent = ({ isOffersFound }: IProps) => {
 };
 
 const UserResultPage = WithUserResultConsumer(UserResultPageComponent);
+
 export { UserResultPage };

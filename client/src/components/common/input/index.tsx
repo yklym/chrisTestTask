@@ -6,6 +6,8 @@ interface IProps<ValueType extends string | number> {
   type?: HTMLInputTypeAttribute;
   value: ValueType;
   label: string;
+  errorMessage?: string;
+  min?: number;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -14,6 +16,8 @@ const Input = <ValueType extends string | number>({
   type,
   value,
   label,
+  errorMessage,
+  min,
   onChange,
 }: IProps<ValueType>) => {
   return (
@@ -24,8 +28,12 @@ const Input = <ValueType extends string | number>({
         name={name}
         type={type}
         value={value}
+        min={min}
         onChange={onChange}
       />
+      {!!(errorMessage && errorMessage.length) && (
+        <span className={styles.errorMessage}>{errorMessage}</span>
+      )}
     </div>
   );
 };

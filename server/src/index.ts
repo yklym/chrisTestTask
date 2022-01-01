@@ -1,14 +1,15 @@
+import Express from "express";
+import userRouter from "./routes/user.route";
+import cors from "cors";
 
-import Express, { Request, Response } from "express";
 const app = Express();
-const port = 8080; // default port to listen
 
-// define a route handler for the default home page
-app.get("/", (req : Request, res: Response) => {
-  res.send("Hello world!");
-});
+app.use(Express.json());
+app.use(cors());
 
-// start the Express server
+app.use("/userFormData", userRouter);
+const port = 8080;
+
 app.listen(port, () => {
   console.log(`server started at http://localhost:${port}`);
 });

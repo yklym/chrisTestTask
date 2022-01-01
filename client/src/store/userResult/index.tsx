@@ -27,14 +27,19 @@ const WithUserResultContextProvider = ({
   );
 };
 
-const WithUserResultConsumer = (
-  Component: (
-    props: IUserResultContextState
-  ) => React.ReactElement<IUserResultContextState>
-) => (
-  <UserResultContext.Consumer>
-    {(params) => <Component {...params} />}
-  </UserResultContext.Consumer>
-);
+type IncomingComponent<InnerProps> = (
+  props: IUserResultContextState & InnerProps
+) => React.ReactElement<IUserResultContextState>;
+
+const WithUserResultConsumer = <InnerProps,>(
+  Component: IncomingComponent<InnerProps>
+) =>
+  function Wrapper(props: any) {
+    return (
+      <UserResultContext.Consumer>
+        {(params) => <Component {...params} {...props} />}
+      </UserResultContext.Consumer>
+    );
+  };
 
 export { WithUserResultContextProvider, WithUserResultConsumer };

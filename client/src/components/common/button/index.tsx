@@ -3,13 +3,15 @@ import styles from "./styles.module.scss";
 
 interface IProps {
   label: string;
+  isDisabled?: boolean;
   onClick: () => void;
 }
 
-const Button = ({ label, onClick }: IProps) => (
-  <button className={styles.button} onClick={onClick}>
-    {label}
-  </button>
-);
-
+const Button = ({ label, isDisabled, onClick }: IProps) => {
+  return (
+    <button className={styles.button} onClick={onClick} disabled={isDisabled}>
+      {label}
+    </button>
+  );
+};
 export { Button };

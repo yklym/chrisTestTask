@@ -1,4 +1,4 @@
-import { UserFormStep, UserFormFieldName } from "./enums";
+import { UserFormStep } from "./enums";
 
 export interface IUserFormData {
   [UserFormStep.STEP_ONE]: IUserFormDataStepOne;
@@ -7,15 +7,15 @@ export interface IUserFormData {
 }
 
 export interface IUserFormDataStepOne {
-  [UserFormFieldName.fullName]: string;
-  [UserFormFieldName.email]: string;
-  [UserFormFieldName.phone]: string;
+  fullName: string;
+  email: string;
+  phone: string;
 }
 
 export interface IUserFormDataStepTwo {
-  [UserFormFieldName.annualRevenue]: number;
+  annualRevenue: number;
 }
 
 export interface IUserFormDataStepThree {
-  [UserFormFieldName.fundingRequestedAmount]: number;
+  fundingRequestedAmount: number;
 }

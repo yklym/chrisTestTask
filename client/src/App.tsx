@@ -15,7 +15,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path={AppRoutes.USER_FORM} element={<UserFormPage />} />
-          <Route path={AppRoutes.USER_RESULT} element={UserResultPage} />
+          <Route path={AppRoutes.USER_RESULT} element={<UserResultPage />} />
           <Route path="*" element={<Navigate to={AppRoutes.USER_FORM} />} />
         </Routes>
       </BrowserRouter>
